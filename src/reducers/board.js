@@ -11,13 +11,17 @@ const createBoard = (size = DEFAULT_SIZE, randomizeValues = false) => {
     }
   }
 
-  // Initialize board with glider if empty
+  // Initialize board with element if empty
   if (!randomizeValues) {
-    fields[1][2] = 1;
-    fields[2][3] = 1;
-    fields[3][1] = 1;
-    fields[3][2] = 1;
-    fields[3][3] = 1;
+    fields[10][10] = 1;
+    fields[11][10] = 1;
+
+    fields[9][11] = 1;
+    fields[12][11] = 1;
+
+    fields[10][12] = 1;
+    fields[11][12] = 1;
+    fields[12][12] = 1;
   }
 
   return fields;
@@ -25,6 +29,8 @@ const createBoard = (size = DEFAULT_SIZE, randomizeValues = false) => {
 
 const initialState = {
   size: DEFAULT_SIZE,
+  autoplay: false,
+  autoplaySpeedMs: 100,
   state: createBoard(),
 };
 
@@ -34,6 +40,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         state: action.newState,
+      };
+    case 'TOGGLE_AUTOPLAY':
+      return {
+        ...state,
+        autoplay: !state.autoplay,
       };
     default:
       return state;

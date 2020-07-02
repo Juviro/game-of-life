@@ -1,6 +1,7 @@
 import { cloneDeep, sum } from 'lodash';
 
 import { setBoardState } from '../actions/board';
+import { evolveBoard } from '../actions/evolutions';
 
 const RELATIVE_NEIGHBOR_POOSITIONS = [
   [-1, -1],
@@ -60,6 +61,16 @@ export default (store) => (next) => (action) => {
     );
 
     store.dispatch(setBoardState(boardStateCopy));
+
+    if (board.autoplay) {
+      setTimeout(() => store.dispatch(evolveBoard()), board.autoplaySpeedMs);
+    }
+  } else if (action.type === 'TOGGLE_AUTOPLAY') {
+    const { board } = store.getState();
+    next(action);
+    if (board.autoplay) return;
+
+    store.dispatch(evolveBoard());
   } else {
     next(action);
   }
