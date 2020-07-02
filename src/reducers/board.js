@@ -30,7 +30,7 @@ const createBoard = (size = DEFAULT_SIZE, randomizeValues = false) => {
 const initialState = {
   size: DEFAULT_SIZE,
   autoplay: false,
-  autoplaySpeedMs: 100,
+  autoplaySpeedMs: 1000,
   state: createBoard(),
 };
 
@@ -45,6 +45,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         autoplay: !state.autoplay,
+      };
+    case 'SET_AUTOPLAY_SPEED':
+      return {
+        ...state,
+        autoplaySpeedMs: action.autoplaySpeedMs,
       };
     default:
       return state;
