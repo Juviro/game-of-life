@@ -1,4 +1,7 @@
-const DEFAULT_SIZE = 24;
+import gliderGun from '../constants/gliderGun';
+
+const DEFAULT_SIZE = 40;
+const DEFAULT_SPEED = 100;
 
 export const createBoard = (size = DEFAULT_SIZE, randomizeValues = false) => {
   const fields = [];
@@ -11,27 +14,14 @@ export const createBoard = (size = DEFAULT_SIZE, randomizeValues = false) => {
     }
   }
 
-  // Initialize board with element if empty
-  // if (!randomizeValues) {
-  //   fields[10][10] = 1;
-  //   fields[11][10] = 1;
-
-  //   fields[9][11] = 1;
-  //   fields[12][11] = 1;
-
-  //   fields[10][12] = 1;
-  //   fields[11][12] = 1;
-  //   fields[12][12] = 1;
-  // }
-
   return fields;
 };
 
 const initialState = {
   size: DEFAULT_SIZE,
   autoplay: false,
-  autoplaySpeedMs: 1000,
-  state: createBoard(),
+  autoplaySpeedMs: DEFAULT_SPEED,
+  state: gliderGun,
 };
 
 export default (state = initialState, action) => {
@@ -55,6 +45,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         autoplaySpeedMs: action.autoplaySpeedMs,
+      };
+    case 'CLEAR_BOARD':
+      return {
+        ...state,
+        state: createBoard(state.size),
+      };
+    case 'RANDOMIZE_BOARD':
+      return {
+        ...state,
+        state: createBoard(state.size, true),
       };
     default:
       return state;
