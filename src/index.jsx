@@ -4,12 +4,9 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './App';
 import reducers from './reducers';
+import middlewares from './middlewares';
 
-const store = createStore(
-  reducers,
-  // eslint-disable-next-line no-underscore-dangle
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = createStore(reducers, middlewares);
 
 render(
   <Provider store={store}>

@@ -12,14 +12,15 @@ const StyledBoard = styled(Flex)`
   border: 1px solid #eee;
 `;
 
-const Board = ({ size, boardState }) => {
+const Board = ({ size, state: boardState }) => {
   const fieldSize = `${100 / size}%`;
   return (
     <StyledBoard direction="row" wrap="wrap">
       {boardState.map((row, x) =>
         row.map((isAlive, y) => (
           <Field
-            // we can use indices + size as keys since we never re-arrange the board unless the size changes
+            // We can use indices + size as keys since we never re-arrange
+            // or add/delete the fields unless the size changes.
             // eslint-disable-next-line react/no-array-index-key
             key={`${x};${y};${size}`}
             x={x}

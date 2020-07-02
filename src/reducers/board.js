@@ -13,9 +13,17 @@ const getEmptyBoard = (size = DEFAULT_SIZE) => {
 
 const initialState = {
   size: DEFAULT_SIZE,
-  boardState: getEmptyBoard(),
+  state: getEmptyBoard(),
 };
 
-export default (state = initialState) => {
-  return state;
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case 'SET_BOARD_STATE':
+      return {
+        ...state,
+        state: action.newState,
+      };
+    default:
+      return state;
+  }
 };
