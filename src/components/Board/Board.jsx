@@ -10,6 +10,7 @@ const StyledBoard = styled(Flex)`
   width: ${FIELD_WIDTH}px;
   height: ${FIELD_WIDTH}px;
   border: 1px solid #eee;
+  margin-top: 32px;
 `;
 
 const Board = ({ size, state: boardState }) => {
