@@ -6,8 +6,8 @@ import { clickField } from '../../actions/board';
 
 // take border width into account
 const StyledField = styled.div`
-  width: ${({ size }) => `calc(${size} - 2px)`};
-  height: ${({ size }) => `calc(${size} - 2px)`};
+  width: ${({ size }) => size};
+  height: ${({ size }) => size};
   background-color: ${({ isAlive }) => (isAlive ? 'black' : 'white')};
   border: 1px solid #eee;
   cursor: pointer;
