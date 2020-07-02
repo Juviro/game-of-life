@@ -1,0 +1,3 @@
+- i18n
+- a11y
+- make it responsive
