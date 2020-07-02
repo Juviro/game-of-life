@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "dependencies": {
     "antd": "^4.4.0",
@@ -26,6 +27,7 @@
     "prettier": "^2.0.5",
     "react-scripts": "^3.4.1"
   },
+  "homepage": "https://hauke-witte.de/game-of-life",
   "browserslist": {
     "production": [
       ">0.2%",
