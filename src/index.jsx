@@ -3,13 +3,14 @@ import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './App';
-import reducer from './reducer';
+import reducers from './reducers';
+import middlewares from './middlewares';
 
-const store = createStore(reducer);
+const store = createStore(reducers, middlewares);
 
 render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
