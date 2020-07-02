@@ -9,6 +9,7 @@ import {
   setAutoPlaySpeed,
 } from '../../actions/evolutions';
 import Slider from './Slider';
+import { setBoardSize } from '../../actions/board';
 
 const Controls = ({
   onEvolveBoard,
@@ -16,6 +17,8 @@ const Controls = ({
   autoplay,
   autoplaySpeedMs,
   onSetAutoPlaySpeed,
+  onSetBoardSize,
+  size,
 }) => {
   return (
     <Flex
@@ -40,20 +43,26 @@ const Controls = ({
         value={autoplaySpeedMs}
         tipFormatter={(val) => `${val / 1000}s`}
       />
+      <Slider
+        onChange={onSetBoardSize}
+        min={4}
+        max={32}
+        step={4}
+        label="Size"
+        value={size}
+      />
     </Flex>
   );
 };
 
-const mapStateToProps = ({ board }) => ({
-  autoplay: board.autoplay,
-  autoplaySpeedMs: board.autoplaySpeedMs,
-});
+const mapStateToProps = ({ board }) => board;
 
 const mapDispatchToProps = (dispatch) => ({
   onEvolveBoard: () => dispatch(evolveBoard()),
   onToggleAutoPlay: () => dispatch(toggleAutoPlay()),
   onSetAutoPlaySpeed: (autoplaySpeedMs) =>
     dispatch(setAutoPlaySpeed(autoplaySpeedMs)),
+  onSetBoardSize: (size) => dispatch(setBoardSize(size)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls);

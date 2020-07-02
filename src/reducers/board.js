@@ -1,6 +1,6 @@
 const DEFAULT_SIZE = 24;
 
-const createBoard = (size = DEFAULT_SIZE, randomizeValues = false) => {
+export const createBoard = (size = DEFAULT_SIZE, randomizeValues = false) => {
   const fields = [];
   const getRandomValue = () => Math.round(Math.random());
 
@@ -12,17 +12,17 @@ const createBoard = (size = DEFAULT_SIZE, randomizeValues = false) => {
   }
 
   // Initialize board with element if empty
-  if (!randomizeValues) {
-    fields[10][10] = 1;
-    fields[11][10] = 1;
+  // if (!randomizeValues) {
+  //   fields[10][10] = 1;
+  //   fields[11][10] = 1;
 
-    fields[9][11] = 1;
-    fields[12][11] = 1;
+  //   fields[9][11] = 1;
+  //   fields[12][11] = 1;
 
-    fields[10][12] = 1;
-    fields[11][12] = 1;
-    fields[12][12] = 1;
-  }
+  //   fields[10][12] = 1;
+  //   fields[11][12] = 1;
+  //   fields[12][12] = 1;
+  // }
 
   return fields;
 };
@@ -39,7 +39,12 @@ export default (state = initialState, action) => {
     case 'SET_BOARD_STATE':
       return {
         ...state,
-        state: action.newState,
+        state: action.state,
+      };
+    case 'SET_BOARD_SIZE':
+      return {
+        ...state,
+        size: action.size,
       };
     case 'TOGGLE_AUTOPLAY':
       return {

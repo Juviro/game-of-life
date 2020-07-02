@@ -9,7 +9,7 @@ export default ({ value, onChange, label, min, max, tipFormatter, step }) => {
       <span>{label}</span>
       <Slider
         style={{ width: '100%' }}
-        value={value}
+        defaultValue={value}
         onChange={onChange}
         tipFormatter={tipFormatter}
         step={step}
