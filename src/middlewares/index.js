@@ -2,8 +2,9 @@ import { compose, applyMiddleware } from 'redux';
 
 import boardSelection from './boardSelection';
 import boardEvolution from './boardEvolution';
+import boardSize from './boardSize';
 
-const middlewares = [boardSelection, boardEvolution];
+const middlewares = [boardSelection, boardEvolution, boardSize];
 
 export default compose(
   applyMiddleware(...middlewares),
