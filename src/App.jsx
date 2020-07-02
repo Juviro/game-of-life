@@ -1,19 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import styled from 'styled-components';
+
+import Board from './components/Board';
 import './App.css';
+import { FIELD_WIDTH } from './constants/config';
+import { Flex } from './components/Shared';
 
-function App(props) {
+const StyledApp = styled.div`
+  height: 100%;
+  width: ${FIELD_WIDTH}px;
+`;
+
+export default () => {
   return (
-    <div>{props.hello}</div>
+    <Flex justify="center">
+      <StyledApp>
+        <Board />
+      </StyledApp>
+    </Flex>
   );
-}
-
-function mapStateToProps(state) {
-  return {
-    hello: state.hello,
-  };
-}
-
-const ConnectedApp = connect(mapStateToProps)(App);
-
-export default ConnectedApp;
+};

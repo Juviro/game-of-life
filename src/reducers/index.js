@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
-
-function hello(state = 'Hello World!') {
-  return state;
-}
+import board from './board';
 
 export default combineReducers({
-  hello,
+  board,
 });
